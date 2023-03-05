@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Counter from "./components/Counter";
+import Users from "./components/Users";
+import Nav from "./components/Nav";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import "./styles/nav.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route element={<Nav />}>
+          <Route path="/" element={<h1>Welcome!!</h1>} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="*" element={<h2>404: page not found</h2>} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }
 
